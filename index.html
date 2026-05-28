@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predollin Advocacia | Suzano - SP</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           CSS: ESTILO FOCADO EM CONTEÚDO COM IMAGENS INTEGRADAS
+           ========================================= */
+        
+        :root {
+            --azul-escuro: #0a192f;
+            --dourado: #d4af37;
+            --branco: #ffffff;
+            --fundo-cinza: #f4f6f8;
+            --texto-cor: #333333;
+            --texto-claro: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--texto-cor);
+            line-height: 1.8;
+            background-color: var(--branco);
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+            color: var(--azul-escuro);
+        }
+
+        /* Barra de Navegação */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--dourado);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: var(--azul-escuro);
+            margin-left: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: var(--dourado);
+        }
+
+        /* Introdução com Imagem de Fundo Sutil e Efeito Paralaxe */
+        #inicio {
+            margin-top: 80px; 
+            padding: 100px 50px;
+            /* MÁGICA 1: Imagem de fundo com uma "tinta" cinza clara quase sólida por cima */
+            background: linear-gradient(rgba(244, 246, 248, 0.92), rgba(244, 246, 248, 0.96)), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 4px solid var(--dourado);
+        }
+
+        .intro-texto {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .intro-texto h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .intro-texto p {
+            font-size: 1.1rem;
+            color: var(--texto-claro);
+            margin-bottom: 30px;
+        }
+
+        /* Caixa de Destaque com Imagem Escura Integrada */
+        .intro-destaque {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            /* MÁGICA 2: Imagem de fundo dentro da caixa, escurecida com a cor azul da paleta */
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95)), url('https://images.unsplash.com/photo-1505664173617-e9456cb43b01?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover;
+            color: var(--branco);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border: 1px solid rgba(212, 175, 55, 0.2); /* Bordinha dourada super fina */
+        }
+
+        .intro-destaque h3 {
+            color: var(--dourado);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Seção Diferenciais (Mantida Branca para contraste) */
+        #diferenciais {
+            padding: 80px 50px;
+            background-color: var(--branco);
+            text-align: center;
+        }
+
+        .grid-diferenciais {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .item-diferencial i {
+            font-size: 2rem;
+            color: var(--dourado);
+            margin-bottom: 15px;
+        }
+
+        /* Seção Áreas de Atuação */
+        #servicos {
+            padding: 80px 50px;
+            background-color: var(--fundo-cinza);
+        }
+
+        .titulo-secao {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .grid-servicos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* MÁGICA 3: O Efeito de Hover com Imagens nos Cards */
+        .card-servico {
+            position: relative; /* Necessário para segurar a imagem de fundo */
+            background-color: var(--branco);
+            padding: 40px 30px;
+            border-left: 4px solid var(--azul-escuro);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            overflow: hidden; /* Corta a imagem para não vazar do card */
+            z-index: 1; /* Mantém o texto na frente */
+        }
+
+        /* Criando uma "tela em branco" atrás do texto para colocar a foto */
+        .card-servico::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0; /* Começa invisível */
+            transition: opacity 0.5s ease;
+            z-index: -1; /* Joga para trás do texto */
+        }
+
+        /* Quando passa o mouse, a imagem aparece bem fraquinha (10% de opacidade) */
+        .card-servico:hover::before {
+            opacity: 0.10; 
+        }
+
+        .card-servico:hover {
+            border-left: 4px solid var(--dourado);
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Atribuindo imagens específicas para cada card */
+        .card-servico:nth-child(1)::before { background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } /* Balança/Martelo */
+        .card-servico:nth-child(2)::before { background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } /* Contratos */
+        .card-servico:nth-child(3)::before { background-image: url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } /* Finanças/Banco */
+        .card-servico:nth-child(4)::before { background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } /* Prédio Empresarial */
+
+        .card-servico h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-servico h3 i {
+            color: var(--dourado);
+        }
+
+        /* Botão WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 200px;
+            height: 50px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 25px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s;
+            gap: 10px;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.05);
+        }
+
+        /* Rodapé Completo com Imagem de Fundo Escura */
+        footer {
+            /* MÁGICA 4: Imagem noturna sutil no rodapé */
+            background: linear-gradient(rgba(10, 25, 47, 0.95), rgba(10, 25, 47, 0.98)), url('https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: var(--branco);
+            padding: 60px 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .footer-col {
+            max-width: 300px;
+            position: relative; /* Garante que o texto fique acima do fundo */
+            z-index: 2;
+        }
+
+        .footer-col h3 {
+            color: var(--dourado);
+            margin-bottom: 20px;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #cccccc;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#" class="logo">Predollin <span>Advocacia</span></a>
+        <div class="menu">
+            <a href="#inicio">Apresentação</a>
+            <a href="#servicos">Especialidades</a>
+            <a href="#contato">Contato</a>
+        </div>
+    </nav>
+
+    <header id="inicio">
+        <div class="intro-texto">
+            <h1>Excelência Técnica em Defesa do seu Patrimônio</h1>
+            <p>Atuação combativa e estratégica voltada para a resolução de litígios complexos e proteção de interesses empresariais e civis.</p>
+            <p>O escritório Predollin Advocacia compreende que cada caso exige um estudo aprofundado e uma tese jurídica sob medida. Nosso compromisso é com o rigor técnico, a ética e, acima de tudo, com os resultados.</p>
+        </div>
+        
+        <div class="intro-destaque">
+            <h3>Atendimento Direto</h3>
+            <p>A agilidade na resposta é crucial no cenário jurídico atual. Fale diretamente com nossa equipe especializada para uma análise preliminar do seu cenário.</p>
+            <br>
+            <p><i class="fas fa-map-marker-alt" style="color: var(--dourado);"></i> <strong>Sede:</strong> Suzano / SP</p>
+            <p><i class="fab fa-whatsapp" style="color: var(--dourado); margin-top: 10px;"></i> <strong>Plantão:</strong> (11) 97272-9044</p>
+        </div>
+    </header>
+
+    <section id="diferenciais">
+        <h2>Por que escolher a Predollin Advocacia?</h2>
+        <div class="grid-diferenciais">
+            <div class="item-diferencial">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Atuação Preventiva</h4>
+                <p>Antecipamos riscos estruturando operações seguras e contratos blindados.</p>
+            </div>
+            <div class="item-diferencial">
+                <i class="fas fa-gavel"></i>
+                <h4>Contencioso Agressivo</h4>
+                <p>Postura firme e tecnicamente irretocável perante os tribunais.</p>
+            </div>
+            <div class="item-diferencial">
+                <i class="fas fa-user-tie"></i>
+                <h4>Atendimento Pessoal</h4>
+                <p>O cliente trata diretamente com os advogados titulares da banca.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <h2 class="titulo-secao">Nossas Especialidades</h2>
+        <div class="grid-servicos">
+            
+            <div class="card-servico">
+                <h3><i class="fas fa-balance-scale"></i> Contencioso Cível</h3>
+                <p>Defesa intransigente em litígios cíveis. Atuamos com teses atualizadas e acompanhamento rigoroso de prazos e recursos em todas as instâncias.</p>
+            </div>
+
+            <div class="card-servico">
+                <h3><i class="fas fa-file-invoice-dollar"></i> Cobrança Judicial</h3>
+                <p>Mapeamento patrimonial de devedores e execução forçada de títulos, visando a recuperação efetiva e rápida de créditos inadimplidos.</p>
+            </div>
+
+            <div class="card-servico">
+                <h3><i class="fas fa-university"></i> Civil Bancário</h3>
+                <p>Análise pericial de contratos, defesa em ações de busca e apreensão, execuções bancárias e ações revisionais contra taxas abusivas.</p>
+            </div>
+
+            <div class="card-servico">
+                <h3><i class="fas fa-building"></i> Empresarial</h3>
+                <p>Assessoria jurídica integral para empresas. Desde disputas societárias até a elaboração de contratos comerciais complexos e compliance.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <a href="https://wa.me/5511972729044?text=Olá!%20Gostaria%20de%20conversar%20com%20um%20advogado." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
+        Chame no WhatsApp
+    </a>
+
+    <footer id="contato">
+        <div class="footer-col">
+            <h3 class="logo" style="color: white;">Predollin <span>Advocacia</span></h3>
+            <p>Defesa estratégica e personalizada para seus negócios e patrimônio.</p>
+        </div>
+        
+        <div class="footer-col">
+            <h3>Localização</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Suzano / SP</p>
+            <p>Atendimento presencial e consultoria virtual para todo o Brasil.</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contato</h3>
+            <p><i class="fab fa-whatsapp"></i> (11) 97272-9044</p>
+            <p><i class="fas fa-envelope"></i> contato@predollinadvocacia.com.br</p>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Predollin Advocacia. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Rolagem suave para os links do menu
+        document.querySelectorAll('.menu a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                const y = targetElement.getBoundingClientRect().top + window.scrollY - 80;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
