@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Predollin Advocacia | Suzano - SP</title>
     
+    <!-- Fontes e Ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -79,11 +80,10 @@
             color: var(--dourado);
         }
 
-        /* Introdução com Imagem de Fundo Sutil e Efeito Paralaxe */
+        /* Introdução com Imagem de Fundo Sutil */
         #inicio {
             margin-top: 80px; 
             padding: 100px 50px;
-            /* MÁGICA 1: Imagem de fundo com uma "tinta" cinza clara quase sólida por cima */
             background: linear-gradient(rgba(244, 246, 248, 0.92), rgba(244, 246, 248, 0.96)), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
             display: flex;
             flex-wrap: wrap;
@@ -101,28 +101,44 @@
 
         .intro-texto h1 {
             font-size: 2.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.2;
         }
 
-        .intro-texto p {
-            font-size: 1.1rem;
-            color: var(--texto-claro);
-            margin-bottom: 30px;
+        /* MÁGICA NOVA: O Selo (Badge) de Experiência */
+        .badge-experiencia {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.1); /* Fundo dourado bem transparente */
+            color: #b5952f; /* Dourado um pouco mais escuro para leitura */
+            padding: 8px 15px;
+            border-left: 3px solid var(--dourado);
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
         }
 
-        /* Caixa de Destaque com Imagem Escura Integrada */
+        .badge-experiencia i {
+            margin-right: 8px;
+        }
+
+        .intro-texto p.descricao {
+            font-size: 1.1rem;
+            color: var(--texto-claro);
+            margin-bottom: 20px;
+        }
+
+        /* Caixa de Destaque */
         .intro-destaque {
             flex: 1;
             min-width: 300px;
             max-width: 500px;
-            /* MÁGICA 2: Imagem de fundo dentro da caixa, escurecida com a cor azul da paleta */
             background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95)), url('https://images.unsplash.com/photo-1505664173617-e9456cb43b01?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover;
             color: var(--branco);
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            border: 1px solid rgba(212, 175, 55, 0.2); /* Bordinha dourada super fina */
+            border: 1px solid rgba(212, 175, 55, 0.2); 
         }
 
         .intro-destaque h3 {
@@ -131,7 +147,7 @@
             font-size: 1.5rem;
         }
 
-        /* Seção Diferenciais (Mantida Branca para contraste) */
+        /* Seção Diferenciais */
         #diferenciais {
             padding: 80px 50px;
             background-color: var(--branco);
@@ -172,19 +188,18 @@
             margin: 0 auto;
         }
 
-        /* MÁGICA 3: O Efeito de Hover com Imagens nos Cards */
+        /* Efeito de Hover com Imagens nos Cards */
         .card-servico {
-            position: relative; /* Necessário para segurar a imagem de fundo */
+            position: relative; 
             background-color: var(--branco);
             padding: 40px 30px;
             border-left: 4px solid var(--azul-escuro);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: all 0.4s ease;
-            overflow: hidden; /* Corta a imagem para não vazar do card */
-            z-index: 1; /* Mantém o texto na frente */
+            overflow: hidden; 
+            z-index: 1; 
         }
 
-        /* Criando uma "tela em branco" atrás do texto para colocar a foto */
         .card-servico::before {
             content: '';
             position: absolute;
@@ -194,12 +209,11 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            opacity: 0; /* Começa invisível */
+            opacity: 0; 
             transition: opacity 0.5s ease;
-            z-index: -1; /* Joga para trás do texto */
+            z-index: -1; 
         }
 
-        /* Quando passa o mouse, a imagem aparece bem fraquinha (10% de opacidade) */
         .card-servico:hover::before {
             opacity: 0.10; 
         }
@@ -210,11 +224,10 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        /* Atribuindo imagens específicas para cada card */
-        .card-servico:nth-child(1)::before { background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } /* Balança/Martelo */
-        .card-servico:nth-child(2)::before { background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } /* Contratos */
-        .card-servico:nth-child(3)::before { background-image: url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } /* Finanças/Banco */
-        .card-servico:nth-child(4)::before { background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } /* Prédio Empresarial */
+        .card-servico:nth-child(1)::before { background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } 
+        .card-servico:nth-child(2)::before { background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } 
+        .card-servico:nth-child(3)::before { background-image: url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } 
+        .card-servico:nth-child(4)::before { background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'); } 
 
         .card-servico h3 {
             font-size: 1.3rem;
@@ -254,9 +267,8 @@
             transform: scale(1.05);
         }
 
-        /* Rodapé Completo com Imagem de Fundo Escura */
+        /* Rodapé Completo */
         footer {
-            /* MÁGICA 4: Imagem noturna sutil no rodapé */
             background: linear-gradient(rgba(10, 25, 47, 0.95), rgba(10, 25, 47, 0.98)), url('https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
             color: var(--branco);
             padding: 60px 50px;
@@ -268,7 +280,7 @@
 
         .footer-col {
             max-width: 300px;
-            position: relative; /* Garante que o texto fique acima do fundo */
+            position: relative; 
             z-index: 2;
         }
 
@@ -298,6 +310,7 @@
 </head>
 <body>
 
+    <!-- Navegação Superior -->
     <nav id="navbar">
         <a href="#" class="logo">Predollin <span>Advocacia</span></a>
         <div class="menu">
@@ -307,13 +320,21 @@
         </div>
     </nav>
 
+    <!-- Introdução -->
     <header id="inicio">
         <div class="intro-texto">
             <h1>Excelência Técnica em Defesa do seu Patrimônio</h1>
-            <p>Atuação combativa e estratégica voltada para a resolução de litígios complexos e proteção de interesses empresariais e civis.</p>
-            <p>O escritório Predollin Advocacia compreende que cada caso exige um estudo aprofundado e uma tese jurídica sob medida. Nosso compromisso é com o rigor técnico, a ética e, acima de tudo, com os resultados.</p>
+            
+            <!-- AQUI ESTÁ A MÁGICA: O Selo de Experiência e Formação -->
+            <div class="badge-experiencia">
+                <i class="fas fa-award"></i> Mais de 22 anos de experiência | Pós-graduado na PUC
+            </div>
+
+            <p class="descricao">Atuação combativa e estratégica voltada para a resolução de litígios complexos e proteção de interesses empresariais e civis.</p>
+            <p class="descricao">O escritório Predollin Advocacia compreende que cada caso exige um estudo aprofundado e uma tese jurídica sob medida. Nosso compromisso é com o rigor técnico, a ética e, acima de tudo, com os resultados reais para os nossos clientes.</p>
         </div>
         
+        <!-- Caixa de Destaque -->
         <div class="intro-destaque">
             <h3>Atendimento Direto</h3>
             <p>A agilidade na resposta é crucial no cenário jurídico atual. Fale diretamente com nossa equipe especializada para uma análise preliminar do seu cenário.</p>
@@ -323,6 +344,7 @@
         </div>
     </header>
 
+    <!-- Diferenciais -->
     <section id="diferenciais">
         <h2>Por que escolher a Predollin Advocacia?</h2>
         <div class="grid-diferenciais">
@@ -344,6 +366,7 @@
         </div>
     </section>
 
+    <!-- Áreas de Atuação -->
     <section id="servicos">
         <h2 class="titulo-secao">Nossas Especialidades</h2>
         <div class="grid-servicos">
@@ -371,11 +394,13 @@
         </div>
     </section>
 
+    <!-- Botão WhatsApp -->
     <a href="https://wa.me/5511972729044?text=Olá!%20Gostaria%20de%20conversar%20com%20um%20advogado." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
         Chame no WhatsApp
     </a>
 
+    <!-- Rodapé Completo -->
     <footer id="contato">
         <div class="footer-col">
             <h3 class="logo" style="color: white;">Predollin <span>Advocacia</span></h3>
@@ -399,6 +424,7 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
         // Rolagem suave para os links do menu
         document.querySelectorAll('.menu a').forEach(anchor => {
